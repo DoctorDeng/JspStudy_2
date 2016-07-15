@@ -1,4 +1,4 @@
-package imooc;
+package entity;
 
 import java.io.Serializable;
 
@@ -14,7 +14,7 @@ public class Student implements Serializable {
 	
 	public Student(){}
 	
-	public Student(int id, String stuName, int age, int gender, String address) {
+	public Student(int id, String stuName, int gender,int age,  String address) {
 		super();
 		this.id = id;
 		this.stuName = stuName;
