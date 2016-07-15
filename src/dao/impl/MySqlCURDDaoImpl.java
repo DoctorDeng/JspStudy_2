@@ -10,7 +10,7 @@ import java.util.Vector;
 
 import dao.CommanCURDDao;
 import util.SqlUtil;
-import util.impl.LocalMySqlUtil;
+import util.impl.DataSourceUtil;
 
 public class MySqlCURDDaoImpl implements CommanCURDDao {
 
@@ -19,7 +19,7 @@ public class MySqlCURDDaoImpl implements CommanCURDDao {
 	private SqlUtil sqlUtil;
 	
 	public MySqlCURDDaoImpl() {
-		sqlUtil = new LocalMySqlUtil();
+		sqlUtil = new DataSourceUtil();
 		conn = sqlUtil.getConn();
 	}
 	
