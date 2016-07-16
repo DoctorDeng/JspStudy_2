@@ -23,10 +23,40 @@ public class MySqlCURDDaoImpl implements CommanCURDDao {
 		conn = sqlUtil.getConn();
 	}
 	
+	public void destroy() {
+		try {
+			if (null != conn) {
+				conn.close();
+				conn = null;
+			}
+			if (null != ps) {
+				ps.close();
+				ps = null;
+			}
+		} catch(SQLException e) {
+			System.out.println("连接关闭错误");
+			e.printStackTrace();
+		}
+	}
+	
+	public void init(String sql) {
+		try {
+			if (null == conn) {
+				conn = sqlUtil.getConn();
+			}
+			if (null == ps) {
+				ps = conn.prepareStatement(sql);
+			}
+		} catch(SQLException e) {
+			System.out.println("获取连接错误！");
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	public boolean insert(String sql, List<String> str) {
 		try {
-			ps = conn.prepareStatement(sql);
+			init(sql);
 			if (str != null && !str.isEmpty()) {
 				for (int i=0; i<str.size(); i++) {
 					ps.setString(i + 1, str.get(i));
@@ -40,13 +70,15 @@ public class MySqlCURDDaoImpl implements CommanCURDDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
-		} 
+		} finally {
+			destroy();
+		}
 	}
 
 	@Override
 	public boolean delete(String sql, List<String> str) {
 		try {
-			ps = conn.prepareStatement(sql);
+			init(sql);
 			if (str != null && !str.isEmpty()) {
 				for (int i=0; i<str.size(); i++) {
 					ps.setString(i + 1, str.get(i));
@@ -64,7 +96,7 @@ public class MySqlCURDDaoImpl implements CommanCURDDao {
 	@Override
 	public boolean update(String sql, List<String> str) {
 		try {
-			ps = conn.prepareStatement(sql);
+			init(sql);
 			if (str != null && !str.isEmpty()) {
 				for (int i=0; i<str.size(); i++) {
 					ps.setString(i + 1, str.get(i));
@@ -84,7 +116,7 @@ public class MySqlCURDDaoImpl implements CommanCURDDao {
 	public Vector<String[]> select(String sql, List<String> str) {
 		Vector<String[]> vector = new Vector<>();
 		try {
-			ps = conn.prepareStatement(sql);
+			init(sql);
 			if (str != null && !str.isEmpty()) {
 				for (int i=0; i<str.size(); i++) {
 					ps.setString(i + 1, str.get(i));
@@ -102,6 +134,7 @@ public class MySqlCURDDaoImpl implements CommanCURDDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			destroy();
 			return vector;
 		}
 	}

@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 public class Page<T>  {
-
-	
 	private int   pageSize; //每页显示记录条数
 	private int   currentPage; //当前页数
 	private int   recordNum; //记录数量

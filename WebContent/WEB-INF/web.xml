@@ -79,4 +79,21 @@
     <servlet-name>UploadFile</servlet-name>
     <url-pattern>/UploadFile</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>pagingServlet</display-name>
+    <servlet-name>pagingServlet</servlet-name>
+    <servlet-class>servlet.pagingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>pagingServlet</servlet-name>
+    <url-pattern>/paging</url-pattern>
+  </servlet-mapping>
+  
+  <jsp-config>
+     <taglib>
+		<taglib-uri>http://java.sun.com/jstl/core</taglib-uri>
+		<taglib-location>/WEB-INF/tld/c.tld</taglib-location>
+     </taglib>
+  </jsp-config>
 </web-app>
