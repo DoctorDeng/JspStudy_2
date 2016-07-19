@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -26,15 +28,25 @@ public class UploadFile extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("image/jpg");
+		response.setContentType("image/png");
+		String image = "4.png";
 		ServletContext ctx = getServletContext();
+		InputStream is = ctx.getResourceAsStream("/images/4.png");
+		
+		int read = 0;
+		byte[] bytes = new byte[1024];
+		OutputStream os = response.getOutputStream();
+		while((read = is.read(bytes)) != -1) {
+			os.write(bytes, 0, read);
+		}
+		os.flush();
+		os.close();
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

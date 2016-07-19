@@ -123,4 +123,26 @@
     <servlet-name>CartServlet</servlet-name>
     <url-pattern>/CartServlet</url-pattern>
   </servlet-mapping>
+  <context-param>
+    <param-name>adminEmail</param-name>
+    <param-value>emailTest@qq.com</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>breed</param-name>
+  	<param-value>yellowDog</param-value>
+  </context-param>
+  
+  <listener>
+    <listener-class>listener.MyServletContextListener</listener-class>
+  </listener>
+  <servlet>
+    <description></description>
+    <display-name>ListenerTester</display-name>
+    <servlet-name>ListenerTester</servlet-name>
+    <servlet-class>servlet.ListenerTester</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListenerTester</servlet-name>
+    <url-pattern>/ListenerTester</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -2,8 +2,8 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
-import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -44,8 +44,18 @@ public class GetInitParameterServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		out.println("用户名:" + this.getUsername());
-		out.println("密码:" + this.getPassword());
+		out.println("ServletConfig有如下参数：<br/>");
+		
+		Enumeration e = getServletConfig().getInitParameterNames();
+		while(e.hasMoreElements()) {
+			out.println("<br>参数名: " + e.nextElement() + "<br>");
+		}
+		
+		out.println("<hr/>");
+		/*out.println("用户名:" + this.getUsername());
+		out.println("密码:" + this.getPassword());*/
+		out.println("<h3>如下是通过ServletContext获取的全局Servlet共享的参数</h3>");
+		out.println("Email地址是:" + getServletContext().getInitParameter("adminEmail"));
 		out.flush();
 		out.close();
 	}
