@@ -7,6 +7,9 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class FirstFilter implements Filter {
 
@@ -25,7 +28,10 @@ public class FirstFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		System.out.println("开始过滤");
-		chain.doFilter(request, response);
+		HttpServletRequest req  = (HttpServletRequest)  request;
+		HttpServletResponse res = (HttpServletResponse) response;
+		res.sendRedirect(req.getContextPath() + "/filter/main.jsp");
+		//chain.doFilter(request, response);
 		System.out.println("结束过滤");
 	}
 
