@@ -30,8 +30,11 @@ public class FirstFilter implements Filter {
 		System.out.println("开始过滤");
 		HttpServletRequest req  = (HttpServletRequest)  request;
 		HttpServletResponse res = (HttpServletResponse) response;
-		res.sendRedirect(req.getContextPath() + "/filter/main.jsp");
+		//重定向
+		//res.sendRedirect(req.getContextPath() + "/filter/main.jsp");
 		//chain.doFilter(request, response);
+		//req.getRequestDispatcher("main.jsp").forward(request, response);
+		req.getRequestDispatcher("main.jsp").include(request, response);
 		System.out.println("结束过滤");
 	}
 
