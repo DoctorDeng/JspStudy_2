@@ -154,7 +154,6 @@
     <url-pattern>/filter/index.jsp</url-pattern>
     <dispatcher>REQUEST</dispatcher>
   </filter-mapping>
-  <!--  Error 过滤器配置 -->
   <filter>
     <display-name>ErrorFilter</display-name>
     <filter-name>ErrorFilter</filter-name>
@@ -165,9 +164,18 @@
     <url-pattern>/filter/error.jsp</url-pattern>
     <dispatcher>ERROR</dispatcher>
   </filter-mapping>
-  <!-- Error 页面配置 -->
-    <error-page>
+  <error-page>
     <error-code>404</error-code>
     <location>/filter/error.jsp</location>
   </error-page>
+  <servlet>
+    <description></description>
+    <display-name>TestServlet</display-name>
+    <servlet-name>TestServlet</servlet-name>
+    <servlet-class>servlet.TestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TestServlet</servlet-name>
+    <url-pattern>/TestServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
