@@ -178,4 +178,12 @@
     <servlet-name>TestServlet</servlet-name>
     <url-pattern>/TestServlet</url-pattern>
   </servlet-mapping>
+  <listener>
+    <listener-class>listener.MyHttpSessionListener</listener-class>
+  </listener>
+  
+  <session-config>
+      <!-- 设置 Session 超时时间, 单位：分钟 -->
+      <session-timeout>1</session-timeout>
+  </session-config>
 </web-app>
