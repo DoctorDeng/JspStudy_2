@@ -25,15 +25,15 @@ public class TestServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*String[] bankids = request.getParameterValues("bankIds");
+		String[] bankids = request.getParameterValues("bankIds");
 		System.out.println("bankIds" + bankids);
 		for (int i = 0, len = bankids.length; i < len; i++) {
 			System.out.println("bankId:" + bankids[i]);
-		}*/
-		String[] boxs  = request.getParameterValues("testBox");
+		}
+		/*String[] boxs  = request.getParameterValues("testBox");
 		for (int i = 0, len = boxs.length; i < len; i++) {
 			System.out.println("boxs:" + boxs[i]);
-		}
+		}*/
 	}
 
 	/**
