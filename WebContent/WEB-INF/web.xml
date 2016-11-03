@@ -187,4 +187,13 @@
   <listener>
     <listener-class>listener.MyRequestListener</listener-class>
   </listener>
+  <listener>
+    <listener-class>listener.MyServletContextAttributeListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>listener.MyHttpSessionAttributeListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>listener.MyHttpRequestAttributeListener</listener-class>
+  </listener>
 </web-app>
